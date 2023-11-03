@@ -2,6 +2,12 @@
 
 Inject/interpolate environment variables in strings.
 
+## Install
+
+```
+composer require 24hoursmedia/php-env-inject
+```
+
 ## Usage
 
 ```php
@@ -14,7 +20,7 @@ echo EnvInject::interpolate('Hello ${YOUR_NAME}! ${MESSAGE:-Have a nice day!}');
 ```
 
 
-## Develop
+## Develop and run tests
 
 Open project in a docker container:
 
