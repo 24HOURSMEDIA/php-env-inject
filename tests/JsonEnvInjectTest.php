@@ -35,6 +35,9 @@ class JsonEnvInjectTest extends TestCase
         }
     }
 
+    /**
+     * @covers ::interpolate
+     */
     public function testInterpolate(): void
     {
         $value = 'f"o"o';
