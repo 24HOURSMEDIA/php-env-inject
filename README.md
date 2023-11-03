@@ -26,9 +26,13 @@ echo EnvInject::interpolate('Hello ${YOUR_NAME}! ${MESSAGE:-Have a nice day!}');
 // Hello John Doe! Have a nice day!
 ```
 
-### Interpolating JSON strings
+### Interpolation in JSON strings
 
 Escape json values with `JsonEnvInject::interpolate()`:
+
+Substituting raw environment variables in JSON strings can result in failures
+if you have special characters in your values such as quotes.
+The JsonEnvInject class can escape JSON strings for you before interpolation.
 
 ```php
 <?php
