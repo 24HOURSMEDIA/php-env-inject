@@ -46,6 +46,27 @@ class EnvInjectTest extends TestCase
         $this->assertSame($expect, EnvInject::interpolate($input));
     }
 
+    /**
+     * @covers ::interpolateWithCallback
+     */
+    public function testInterpolateWithCallback(): void
+    {
+        putenv('FOO=foo');
+        $actual = EnvInject::interpolateWithCallback(
+            '${FOO} bar ${BAR} ${BAR:-defaultbar}',
+            function ($value, string $name) {
+                if ($name === 'BAR') {
+                    return strtoupper($value);
+                }
+                if ($value === 'foo') {
+                    return 'foo!';
+                }
+                return $value;
+            }
+        );
+        $this->assertSame('foo! bar ${BAR} DEFAULTBAR', $actual);
+    }
+
     public static function interpolateDataProvider(): iterable {
         yield 'no interpolation' => [
             'foo',

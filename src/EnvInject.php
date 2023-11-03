@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace T4\EnvInject;
 
+use Closure;
+
 /**
  * The EnvInject class provides utility methods for working with environment variables.
  * It allows for interpolation of environment variables within strings.
@@ -32,6 +34,31 @@ class EnvInject
             } else {
                 // Return the original placeholder if no environment variable or default value is found
                 return $matches[0];
+            }
+        }, $string);
+    }
+
+    /**
+     * Interpolates and allows modification of the env variables with a callback.
+     * The callback is called with the value of the env variable and the name of the env variable.
+     * The callback should return the value to be used in the interpolated string.
+     *
+     * Useful for escaping values.
+     */
+    public static function interpolateWithCallback(string $string, Closure $callback): string
+    {
+        return preg_replace_callback('/\$\{([A-Za-z0-9_]+)(:-([^}]*))?}/', function($matches) use ($callback) {
+            $envName = $matches[1];
+            $envValue = getenv($envName);
+            if ($envValue !== false) {
+                // Return the environment variable's value if it exists
+                return $callback($envValue, $envName);
+            } elseif (isset($matches[3])) {
+                // Return the default value specified after the ':-' if the environment variable is not set
+                return  $callback($matches[3], $envName);
+            } else {
+                // Return the original placeholder if no environment variable or default value is found
+                return  $callback($matches[0], $envName);
             }
         }, $string);
     }
