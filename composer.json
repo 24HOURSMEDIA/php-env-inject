@@ -2,7 +2,7 @@
     "name": "24hoursmedia/php-env-inject",
     "description": "Inject and interpolate environment variables",
     "type": "library",
-    "license": "Apache License 2.0",
+    "license": "Apache-2.0",
     "version": "1.0.0",
     "autoload": {
         "psr-4": {
