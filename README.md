@@ -37,7 +37,7 @@ The JsonEnvInject class can escape JSON strings for you before interpolation.
 ```php
 <?php
 use T4\EnvInject\JsonEnvInject;
-putenv('FOO=f"o"o';
+putenv('FOO=f"o"o');
 echo JsonEnvInject::interpolate('{"foo":"${FOO}"}');
 // {"foo":"f\"o\"o"}
 ```
