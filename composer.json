@@ -1,9 +1,9 @@
 {
     "name": "24hoursmedia/php-env-inject",
-    "description": "Inject and interpolate environment variables",
+    "description": "Inject and interpolate environment variables into strings.",
     "type": "library",
     "license": "Apache-2.0",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "autoload": {
         "psr-4": {
             "T4\\EnvInject\\": "src/"

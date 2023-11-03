@@ -2,6 +2,11 @@
 
 Inject/interpolate environment variables in strings.
 
+- Substitutes raw environment variables in strings
+- Supports default values if environment variable is not set
+- Supports escaping JSON strings
+- Supports a callback to write your own value modifiers / escapers
+
 ## Install
 
 ```
