@@ -11,6 +11,8 @@ use Closure;
  */
 class EnvInject
 {
+    private const REGEX_PATTERN = '/\$\{([A-Za-z0-9_]+)(:-([^}]*))?}/';
+
     /**
      * Interpolates environment variables into a given string.
      *
@@ -23,7 +25,7 @@ class EnvInject
      */
     public static function interpolate(string $string): string
     {
-        return preg_replace_callback('/\$\{([A-Za-z0-9_]+)(:-([^}]*))?}/', function($matches) {
+        return preg_replace_callback(self::REGEX_PATTERN, function($matches) {
             $envValue = getenv($matches[1]);
             if ($envValue !== false) {
                 // Return the environment variable's value if it exists
@@ -47,7 +49,7 @@ class EnvInject
      */
     public static function interpolateWithCallback(string $string, Closure $callback): string
     {
-        return preg_replace_callback('/\$\{([A-Za-z0-9_]+)(:-([^}]*))?}/', function($matches) use ($callback) {
+        return preg_replace_callback(self::REGEX_PATTERN, function($matches) use ($callback) {
             $envName = $matches[1];
             $envValue = getenv($envName);
             if ($envValue !== false) {
