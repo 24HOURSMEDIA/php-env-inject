@@ -7,7 +7,7 @@ Inject/interpolate environment variables in strings.
 - Supports escaping JSON strings
 - Supports a callback to write your own value modifiers / escapers
 
-# Security Considerations
+## Security Considerations
 
 :warning: As often environment variables on a system may contain sensitive data,
 especially if you use dotenv, you should NEVER ALLOW USER INPUT into the
