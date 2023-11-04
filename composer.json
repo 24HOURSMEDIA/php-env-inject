@@ -1,6 +1,20 @@
 {
     "name": "24hoursmedia/php-env-inject",
-    "description": "Inject and interpolate environment variables into strings. Supports substituting default values for an env var, and escapers/formatters using callbacks.",
+    "description": "Inject and interpolate environment variables into strings. Supports substituting default values for an env var, and escapers/formatters using callbacks. Partially supports POSIX compliant shell syntax.",
+    "keywords": [
+        "env",
+        "environment",
+        "variable",
+        "var",
+        "inject",
+        "interpolate",
+        "substitute",
+        "subst",
+        "replace",
+        "escaper",
+        "formatter",
+        "posix"
+    ],
     "type": "library",
     "license": "Apache-2.0",
     "version": "dev-1.1.2",
